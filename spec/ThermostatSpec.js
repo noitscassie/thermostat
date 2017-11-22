@@ -41,7 +41,7 @@ describe("Thermostat", function() {
     });
   });
 
-  describe("Power Saving", function() {
+  describe("Power saving", function() {
     it("_isPowerSavingOn is true by default", function() {
       expect(thermostat._isPowerSavingOn).toEqual(true)
     });
@@ -79,4 +79,18 @@ describe("Thermostat", function() {
       expect(thermostat._temperature).toEqual(20)
     });
   })
+
+  describe("Current energy usage", function() {
+    it("Should return low usage if temperature is <18", function(){
+      thermostat._temperature = 17;
+      expect(thermostat.currentEnergyUsage()).toEqual("Low usage")
+    });
+    it("Should return medium usage if temperature is between 18 and 25 degrees", function() {
+      expect(thermostat.currentEnergyUsage()).toEqual("Medium usage")
+    });
+    it("Should return high usage if temperature is >25 degrees", function() {
+      thermostat._temperature = 26;
+      expect(thermostat.currentEnergyUsage()).toEqual("High usage")
+    });
+  });
 });

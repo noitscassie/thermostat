@@ -43,3 +43,13 @@ Thermostat.prototype._updateMaximumTemperature = function() {
 Thermostat.prototype.resetTemperature = function () {
   this._temperature = 20;
 };
+
+Thermostat.prototype.currentEnergyUsage = function() {
+  if(this._temperature < 18) {
+    return "Low usage";
+  } if(this._temperature >25) {
+    return "High usage";
+  } else {
+    return "Medium usage";
+  }
+};
