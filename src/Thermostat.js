@@ -39,3 +39,7 @@ Thermostat.prototype._updateMaximumTemperature = function() {
     this._maximumTemperature = this._NO_POWER_SAVING_MAX_TEMP;
   }
 };
+
+Thermostat.prototype.resetTemperature = function () {
+  this._temperature = 20;
+};
