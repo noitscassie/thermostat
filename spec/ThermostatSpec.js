@@ -12,3 +12,11 @@ describe("Increase temperature", function() {
     expect(thermostat._temperature).toEqual(21)
   });
 });
+
+describe("Decrease temperature", function() {
+  it("Should decrease the temperature by 1", function() {
+    var thermostat = new Thermostat();
+    thermostat.decreaseTemperature();
+    expect(thermostat._temperature).toEqual(19)
+  });
+});
