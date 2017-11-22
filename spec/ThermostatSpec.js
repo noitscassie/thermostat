@@ -31,4 +31,34 @@ describe("Thermostat", function() {
       expect(thermostat._MINIMUM_TEMPERATURE).toEqual(10)
     });
   });
+
+  describe("Power Saving", function() {
+    it("_isPowerSavingOn is true by default", function() {
+      expect(thermostat._isPowerSavingOn).toEqual(true)
+    });
+    it("_isPowerSavingOn is false after calling togglePowerSaving", function() {
+      thermostat.togglePowerSaving();
+      expect(thermostat._isPowerSavingOn).toEqual(false)
+    });
+    it("_isPowerSavingOn is true after calling togglePowerSaving twice", function() {
+      thermostat.togglePowerSaving();
+      thermostat.togglePowerSaving();
+      expect(thermostat._isPowerSavingOn).toEqual(true)
+    });
+  });
+
+  describe("Maximum temperature", function() {
+    it("Should have a maximum temperature of 25 degrees by default", function() {
+      expect(thermostat._maximumTemperature).toEqual(25)
+    });
+    it("Should have a maximum temperature of 32 degrees if power saving is off", function() {
+      thermostat.togglePowerSaving();
+      expect(thermostat._maximumTemperature).toEqual(32)
+    });
+    it("Should have a maximum temperature of 25 degrees if power saving is om", function() {
+      thermostat.togglePowerSaving();
+      thermostat.togglePowerSaving();
+      expect(thermostat._maximumTemperature).toEqual(25)
+    });
+  });
 });
