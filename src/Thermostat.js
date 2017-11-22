@@ -2,7 +2,9 @@ function Thermostat() {
   this._temperature = 20;
   this._isPowerSavingOn = true;
   this._MINIMUM_TEMPERATURE = 10;
-  this._maximumTemperature = 25;
+  this._POWER_SAVING_MAX_TEMP = 25;
+  this._NO_POWER_SAVING_MAX_TEMP = 32
+  this._maximumTemperature = this._POWER_SAVING_MAX_TEMP;
 };
 
 Thermostat.prototype.increaseTemperature = function () {
@@ -32,8 +34,8 @@ Thermostat.prototype.togglePowerSaving = function () {
 
 Thermostat.prototype._updateMaximumTemperature = function() {
   if(this._isPowerSavingOn) {
-    this._maximumTemperature = 25;
+    this._maximumTemperature = this._POWER_SAVING_MAX_TEMP;
   } else {
-    this._maximumTemperature = 32;
+    this._maximumTemperature = this._NO_POWER_SAVING_MAX_TEMP;
   }
 };
