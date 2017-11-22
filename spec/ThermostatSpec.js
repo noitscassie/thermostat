@@ -17,12 +17,21 @@ describe("Thermostat", function() {
       thermostat.increaseTemperature();
       expect(thermostat._temperature).toEqual(21)
     });
+    it("Can not exceed the maximum temperature", function() {
+      thermostat._temperature = 25;
+      expect(thermostat.increaseTemperature()).toEqual("Sorry, the temperature can not exceed 25 degrees")
+    });
   });
 
   describe("Decrease temperature", function() {
     it("Should decrease the temperature by 1", function() {
       thermostat.decreaseTemperature();
       expect(thermostat._temperature).toEqual(19)
+    });
+
+    it("Can not decrease below the minimum temperature", function() {
+      thermostat._temperature = 10;
+      expect(thermostat.decreaseTemperature()).toEqual("Sorry, you can not set the temperature to below 10 degrees")
     });
   });
 

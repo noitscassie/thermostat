@@ -6,11 +6,19 @@ function Thermostat() {
 };
 
 Thermostat.prototype.increaseTemperature = function () {
-  this._temperature ++;
+  if(this._temperature >= this._maximumTemperature) {
+    return "Sorry, the temperature can not exceed " + this._maximumTemperature + " degrees";
+  } else {
+    this._temperature ++;
+  }
 };
 
 Thermostat.prototype.decreaseTemperature = function () {
-  this._temperature --;
+  if(this._temperature <= this._MINIMUM_TEMPERATURE) {
+    return "Sorry, you can not set the temperature to below 10 degrees";
+  } else {
+    this._temperature --;
+  }
 };
 
 Thermostat.prototype.togglePowerSaving = function () {
