@@ -60,12 +60,11 @@ Thermostat.prototype.decreaseTemperature = function () {
 };
 
 Thermostat.prototype.togglePowerSaving = function () {
-  if(this.getPowerSavingStatus()) {
-    this.setPowerSavingStatus(false);
-  } else {
-    this.setPowerSavingStatus(true);
-  }
+  this.setPowerSavingStatus(!this.getPowerSavingStatus());
   this._updateMaximumTemperature();
+  if (this.getPowerSavingStatus() === true && this.getTemperature() > 25) {
+    this.setTemperature(25);
+  }
 };
 
 Thermostat.prototype._updateMaximumTemperature = function() {
@@ -81,11 +80,19 @@ Thermostat.prototype.resetTemperature = function () {
 };
 
 Thermostat.prototype.currentEnergyUsage = function() {
-  if(this.getTemperature() < 18) {
-    return "Low usage";
-  } if(this.getTemperature() >25) {
-    return "High usage";
+  if(this.getTemperature() <= 18) {
+    return "Low";
+  } if(this.getTemperature() >= 25) {
+    return "High";
   } else {
-    return "Medium usage";
+    return "Medium";
+  }
+};
+
+Thermostat.prototype.powerSavingStatus = function () {
+  if (this.getPowerSavingStatus() === true) {
+    return "Power saving mode: On";
+  } else {
+    return "Power saving mode: Off";
   }
 };
