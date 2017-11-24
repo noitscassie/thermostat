@@ -1,0 +1,10 @@
+source = 'https://rubygems.org'
+
+gem 'json'
+gem 'sinatra'
+gem 'data_mapper'
+gem 'dm-postgres-adapter'
+gem 'dm-migrations'
+gem 'rake'
+gem 'pry'
+gem 'pg'
