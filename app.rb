@@ -26,10 +26,4 @@ class Thermostat_State < Sinatra::Base
     Thermostat.last.to_json
   end
 
-  get '/test' do
-    headers 'Access-Control-Allow-Origin' => '*'
-    
-    Thermostat.last.to_json
-  end
-
 end
