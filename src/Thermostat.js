@@ -91,8 +91,8 @@ Thermostat.prototype.currentEnergyUsage = function() {
 
 Thermostat.prototype.powerSavingStatus = function () {
   if (this.getPowerSavingStatus() === true) {
-    return "Power saving mode: On";
+    return "On";
   } else {
-    return "Power saving mode: Off";
+    return "Off";
   }
 };
