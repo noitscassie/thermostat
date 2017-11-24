@@ -57,7 +57,7 @@ $(document).ready(function() {
       dataType: 'json',
       data:{
         temperature: thermostat.getTemperature(),
-        power_saving_status: thermostat.powerSavingStatus(),
+        power_saving_status: thermostat.getPowerSavingStatus(),
         current_energy_usage: thermostat.currentEnergyUsage(),
         authenticity_token: window._token
       },
@@ -69,9 +69,10 @@ $(document).ready(function() {
       var jsonObject = JSON.parse(data);
       var loadedTemperature = parseInt(jsonObject.temperature);
       thermostat.setTemperature(loadedTemperature);
-      $("temperature").html(thermostat.getTemperature());
-      $("power-saving-status").html(jsonObject.power_saving_status());
-      $("energy-usage").html(jsonObject.current_energy_usage());
+      thermostat.setPowerSavingStatus(JSON.parse(jsonObject.power_saving_status));
+      $("#temperature").html(thermostat.getTemperature());
+      $("#power-saving-status").html(thermostat.powerSavingStatus());
+      $("#energy-usage").html(jsonObject.current_energy_usage);
     });
   };
 
