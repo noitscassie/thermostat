@@ -33,4 +33,15 @@ $(document).ready(function() {
     $("#energy-usage").html(thermostat.currentEnergyUsage());
   });
 
+  $("#user-city-form").submit(function(event) {
+    var city = $("#city").val();
+    $("#city").val("");
+    event.preventDefault();
+    $("#selected-city").html(city);
+    $.get("http://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=metric&APPID=24496bffc3005d5b7c520dbcc7427f2f", function(weather) {
+      $("#selected-city-temperature").text(weather.main.temp);
+    })
+    $("#user-city").show();
+  });
+
 });
